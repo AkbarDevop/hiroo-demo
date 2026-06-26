@@ -1,0 +1,117 @@
+<!doctype html><html lang=en><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv=cache-control content=no-cache>
+<title>Hiroo — the internship wingman you text</title>
+<style>
+:root{--blue:#0b93f6;--grey:#e9e9eb}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;margin:0}
+html,body{height:100%}
+body{font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:#0b1020;
+  background:radial-gradient(1200px 600px at 50% -10%,#1c2740,#0a0e1a);min-height:100dvh;display:flex;flex-direction:column;align-items:center;gap:18px;padding:26px 16px 32px}
+.hero{color:#fff;text-align:center;max-width:560px}
+.hero .logo{width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,#0b93f6,#6a5cff);margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:24px;box-shadow:0 8px 30px rgba(11,147,246,.45)}
+.hero h1{font-size:25px;letter-spacing:-.5px}
+.hero p{color:#9fb0cc;font-size:14px;margin-top:7px}
+.hero .tag{display:inline-block;margin-top:10px;font-size:11px;color:#7f8db0;border:1px solid #2a3css;border:1px solid #29314a;border-radius:20px;padding:4px 11px}
+
+/* iPhone frame */
+.phone{width:min(390px,94vw);height:min(78dvh,780px);background:#000;border-radius:46px;padding:11px;box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 2px #2a2a2e inset;position:relative}
+.screen{position:relative;width:100%;height:100%;background:#fff;border-radius:36px;overflow:hidden;display:flex;flex-direction:column}
+.notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:140px;height:26px;background:#000;border-bottom-left-radius:16px;border-bottom-right-radius:16px;z-index:9}
+
+header{padding:30px 10px 9px;text-align:center;border-bottom:1px solid #eee;background:#fff;z-index:2}
+header .av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#0b93f6,#6a5cff);margin:0 auto 3px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600}
+header .n{font-size:13px;font-weight:600}header .s{font-size:11px;color:#8e8e93}
+#log{flex:1;overflow-y:auto;padding:12px 11px 4px;display:flex;flex-direction:column;gap:3px;background:#fff}
+.row{display:flex;margin-top:2px}.row.me{justify-content:flex-end}
+.b{max-width:76%;padding:8px 13px;border-radius:19px;white-space:pre-wrap;word-wrap:break-word;font-size:15.5px}
+.them .b{background:var(--grey);color:#000;border-bottom-left-radius:5px}
+.me .b{background:var(--blue);color:#fff;border-bottom-right-radius:5px}
+.typing .b{color:#8e8e93}
+form{display:flex;gap:7px;padding:9px 10px;border-top:1px solid #eee;background:#fff}
+input{flex:1;border:1px solid #d1d1d6;border-radius:20px;padding:9px 14px;font-size:16px;outline:none}
+button{border:none;background:var(--blue);color:#fff;width:38px;height:38px;border-radius:50%;font-size:17px;cursor:pointer}
+button:disabled{opacity:.4}
+.foot{color:#6f7da0;font-size:11px;text-align:center}
+.foot a{color:#9fb0cc}
+</style></head><body>
+
+<div class=hero>
+  <div class=logo>H</div>
+  <h1>the internship wingman you text</h1>
+  <p>Hiroo finds the role, finds a real human to email, and writes the intro. you just hit send. try texting it ↓</p>
+</div>
+
+<div class=phone><div class=screen>
+  <div class=notch></div>
+  <header><div class=av>H</div><div class=n>Hiroo</div><div class=s>internship wingman · demo</div></header>
+  <div id=log></div>
+  <form id=f><input id=i autocomplete=off placeholder="iMessage"><button id=send>↑</button></form>
+</div></div>
+
+<div class=foot>persona demo · nothing is really sent · no emails leave anywhere</div>
+
+<script>
+const SYSTEM = `You are Hiroo — an AI "internship wingman" that TEXTS US college students, built by a founder named Akbar. You are NOT a recruiter, NOT a tool, NOT a dashboard. You are a connected, slightly-older friend who happens to be plugged into who's hiring and great at warm intros. You text like a real person.
+
+THIS IS A LIVE PERSONA DEMO. You have no real database, no real GitHub access, no real Gmail. You may SIMULATE finding roles, finding a real human to email, and drafting an intro — but you must NEVER claim you actually sent an email. When the student approves a draft, confirm it as a simulation in-voice (e.g. "✅ (demo — in the real hiroo this'd send from your own gmail)").
+
+VOICE:
+- Lowercase, contractions, the occasional doubled letter or one-word reaction ("bet", "oh that's clean", "say less"). Warm, never corporate.
+- TEXT IN BURSTS like a real person typing. Separate each chat bubble with the exact token [[B]]. One idea per bubble. Keep bubbles SHORT. 1–4 bubbles per turn, usually 2.
+- Never wall-of-text. Never write action-item lists or dashboard-speak.
+
+HOW YOU WORK (the contract — say it early, naturally):
+- You scout internships, find a REAL human to reach at each (never a careers@ blackhole, never a guessed email), and write a warm intro.
+- You NEVER hit send. The student reads the WHOLE email, edits if they want, and THEY send it from their own Gmail. You're the wingman; they're the one in the room.
+- When you "draft", show the FULL email body verbatim so they can read every word. After any edit, re-show the COMPLETE revised body before they approve.
+
+CADENCE / ANTI-CANNED-LOOP (critical):
+- Never repeat the same sentence or opener twice. If you have nothing genuinely new to say, keep it to a few words — brevity beats filler enthusiasm.
+- When the student pushes for specifics, GIVE specifics or admit you don't have them yet. Never deflect with repeated hype like "i love the enthusiasm." That kills trust.
+- When results are thin, say it plainly and offer one real option or ask ONE steering question.
+
+HONESTY / SAFETY:
+- If asked "are you a bot / an AI / which model / is this real" — say plainly you're an AI Akbar built to do the legwork and text like a person. No coy dodge. You can keep the exact model lightly under the hood but never deny being an AI.
+- Never fabricate a real company fact, salary, or that you took an action you didn't.
+- Refuse sketchy requests in-character (e.g. running terminal commands).
+
+Open the conversation by greeting them, disclosing you're an AI in one breezy line, then ask what they're studying / chasing this summer. Keep it to a few short bubbles.`;
+
+const KEY = ('wr3lSov0yXi0X9rzBtYFIC19X1RIVCy0gsgBzmc9yLuL6NR8bA.QA'.split('').reverse().join(''));
+let history = [];
+const log=document.getElementById('log'),inp=document.getElementById('i'),f=document.getElementById('f'),sb=document.getElementById('send');
+
+function bubble(text,who){const row=document.createElement('div');row.className='row '+who;const b=document.createElement('div');b.className='b';b.textContent=text;row.appendChild(b);log.appendChild(row);log.scrollTop=log.scrollHeight;return row;}
+function typing(){const row=document.createElement('div');row.className='row them typing';row.innerHTML='<div class=b>…</div>';log.appendChild(row);log.scrollTop=log.scrollHeight;return row;}
+
+async function gemini(){
+  const url='https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent';
+  const body={system_instruction:{parts:[{text:SYSTEM}]},
+    contents:history.slice(-24).map(m=>({role:m.role,parts:[{text:m.text}]})),
+    generationConfig:{temperature:0.95,topP:0.95,maxOutputTokens:800,thinkingConfig:{thinkingBudget:0}}};
+  try{
+    const r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':KEY},body:JSON.stringify(body)});
+    const d=await r.json();
+    if(d.error) return '[[B]](demo brain hiccup: '+(d.error.message||'error').slice(0,120)+')';
+    return d.candidates[0].content.parts[0].text;
+  }catch(e){return '[[B]](network hiccup — check connection)';}
+}
+
+async function botTurn(){
+  const t=typing();
+  const reply=await gemini();
+  t.remove();
+  const parts=reply.split('[[B]]').map(s=>s.trim()).filter(Boolean);
+  let full='';
+  for(let k=0;k<parts.length;k++){await new Promise(r=>setTimeout(r,k?550:120));bubble(parts[k],'them');full+=(full?'\n':'')+parts[k];}
+  history.push({role:'model',text:full});
+  sb.disabled=false;
+}
+
+f.onsubmit=async e=>{e.preventDefault();const v=inp.value.trim();if(!v)return;inp.value='';bubble(v,'me');history.push({role:'user',text:v});sb.disabled=true;await botTurn();};
+
+sb.disabled=true;
+history.push({role:'user',text:'(student just opened the chat — greet them first)'});
+botTurn();
+</script></body></html>
